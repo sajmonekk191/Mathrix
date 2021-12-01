@@ -29,6 +29,7 @@ namespace Grafy
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -43,13 +44,14 @@ namespace Grafy
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.Updater = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(433, 4);
+            this.label1.Location = new System.Drawing.Point(368, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 25);
             this.label1.TabIndex = 0;
@@ -59,7 +61,7 @@ namespace Grafy
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(997, 38);
+            this.label2.Location = new System.Drawing.Point(909, 117);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 25);
             this.label2.TabIndex = 2;
@@ -69,28 +71,28 @@ namespace Grafy
             // 
             this.panel1.Location = new System.Drawing.Point(12, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(916, 637);
+            this.panel1.Size = new System.Drawing.Size(800, 800);
             this.panel1.TabIndex = 4;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
-            this.panel2.Location = new System.Drawing.Point(942, 42);
+            this.panel2.Location = new System.Drawing.Point(839, 78);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(2, 598);
+            this.panel2.Size = new System.Drawing.Size(2, 700);
             this.panel2.TabIndex = 5;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(999, 100);
+            this.textBox1.Location = new System.Drawing.Point(911, 179);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(116, 23);
             this.textBox1.TabIndex = 6;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(999, 150);
+            this.textBox2.Location = new System.Drawing.Point(911, 229);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(116, 23);
             this.textBox2.TabIndex = 7;
@@ -99,7 +101,7 @@ namespace Grafy
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(971, 311);
+            this.label3.Location = new System.Drawing.Point(883, 390);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(172, 25);
             this.label3.TabIndex = 8;
@@ -109,7 +111,7 @@ namespace Grafy
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(1048, 78);
+            this.label4.Location = new System.Drawing.Point(960, 157);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(17, 19);
             this.label4.TabIndex = 9;
@@ -119,7 +121,7 @@ namespace Grafy
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(1048, 130);
+            this.label5.Location = new System.Drawing.Point(960, 209);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(17, 19);
             this.label5.TabIndex = 10;
@@ -127,7 +129,7 @@ namespace Grafy
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1008, 184);
+            this.button1.Location = new System.Drawing.Point(920, 263);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(95, 23);
             this.button1.TabIndex = 11;
@@ -138,7 +140,7 @@ namespace Grafy
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(1012, 345);
+            this.label6.Location = new System.Drawing.Point(924, 424);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(92, 19);
             this.label6.TabIndex = 12;
@@ -147,34 +149,52 @@ namespace Grafy
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(1008, 371);
+            this.comboBox1.Items.AddRange(new object[] {
+            "5",
+            "10",
+            "15"});
+            this.comboBox1.Location = new System.Drawing.Point(920, 450);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(98, 23);
             this.comboBox1.TabIndex = 13;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(1008, 440);
+            this.comboBox2.Items.AddRange(new object[] {
+            "Blue",
+            "Red",
+            "Green",
+            "Orange",
+            "Yellow"});
+            this.comboBox2.Location = new System.Drawing.Point(920, 519);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(98, 23);
             this.comboBox2.TabIndex = 15;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(1005, 416);
+            this.label7.Location = new System.Drawing.Point(917, 495);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(107, 19);
             this.label7.TabIndex = 14;
             this.label7.Text = "Barva vykreslení";
             // 
+            // Updater
+            // 
+            this.Updater.Enabled = true;
+            this.Updater.Interval = 1;
+            this.Updater.Tick += new System.EventHandler(this.Updater_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1173, 681);
+            this.ClientSize = new System.Drawing.Size(1101, 846);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.comboBox1);
@@ -189,6 +209,7 @@ namespace Grafy
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Mathrix";
             this.ResumeLayout(false);
@@ -212,6 +233,7 @@ namespace Grafy
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Timer Updater;
     }
 }
 

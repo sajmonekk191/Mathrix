@@ -22,15 +22,22 @@ namespace Grafy
             proclbl.Text = "3 %";
             loadlbl.Text = "Vyhledávání Aktualizace ...";
             Wait(1500);
-            using (WebClient webClient = new WebClient())
+            try
             {
-                if (!webClient.DownloadString("https://pastebin.com/5LXUPYx7").Contains("Update1"))
+                using (WebClient webClient = new WebClient())
                 {
-                    if (MessageBox.Show("K dispozici je nová aktualizace !", "Mathrix", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+                    if (!webClient.DownloadString("https://pastebin.com/5LXUPYx7").Contains("Update1"))
                     {
-                        Process.Start(new ProcessStartInfo("http://81.162.196.29/Mathrix") { UseShellExecute = true });
+                        if (MessageBox.Show("K dispozici je nová aktualizace !", "Mathrix", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+                        {
+                            Process.Start(new ProcessStartInfo("http://81.162.196.29/Mathrix") { UseShellExecute = true });
+                        }
                     }
                 }
+            }
+            catch
+            {
+                MessageBox.Show("Error Code: 1\nNepodařilo se vyhledat aktualizace !\nZkuste restartovat Mathrix", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             loadlbl.Location = new System.Drawing.Point(145, 208);
             proclbl.Text = "42 %";
