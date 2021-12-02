@@ -29,7 +29,6 @@ namespace Grafy
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -44,7 +43,6 @@ namespace Grafy
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.Updater = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -135,6 +133,7 @@ namespace Grafy
             this.button1.TabIndex = 11;
             this.button1.Text = "Vykreslit";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label6
             // 
@@ -163,11 +162,9 @@ namespace Grafy
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
-            "Blue",
-            "Red",
-            "Green",
-            "Orange",
-            "Yellow"});
+            "Modrá",
+            "Červená",
+            "Zelená"});
             this.comboBox2.Location = new System.Drawing.Point(920, 519);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(98, 23);
@@ -183,12 +180,6 @@ namespace Grafy
             this.label7.Size = new System.Drawing.Size(107, 19);
             this.label7.TabIndex = 14;
             this.label7.Text = "Barva vykreslení";
-            // 
-            // Updater
-            // 
-            this.Updater.Enabled = true;
-            this.Updater.Interval = 1;
-            this.Updater.Tick += new System.EventHandler(this.Updater_Tick);
             // 
             // Form1
             // 
@@ -233,7 +224,6 @@ namespace Grafy
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Timer Updater;
     }
 }
 

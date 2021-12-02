@@ -28,7 +28,6 @@ C:\Users\sajmo\Desktop\Mathrix-main\obj\Debug\netcoreapp3.1\Grafy.Loader.resourc
 C:\Users\sajmo\Desktop\Mathrix-main\obj\Debug\netcoreapp3.1\Grafy.Main.resources
 C:\Users\sajmo\Desktop\Mathrix-main\obj\Debug\netcoreapp3.1\Grafy.Properties.Resources.resources
 C:\Users\sajmo\Desktop\Mathrix-main\obj\Debug\netcoreapp3.1\Grafy.csproj.GenerateResource.cache
-C:\Users\sajmo\Desktop\Mathrix-main\obj\Debug\netcoreapp3.1\Grafy.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\sajmo\Desktop\Mathrix-main\obj\Debug\netcoreapp3.1\Grafy.AssemblyInfoInputs.cache
 C:\Users\sajmo\Desktop\Mathrix-main\obj\Debug\netcoreapp3.1\Grafy.AssemblyInfo.cs
 C:\Users\sajmo\Desktop\Mathrix-main\obj\Debug\netcoreapp3.1\Grafy.csproj.CoreCompileInputs.cache
