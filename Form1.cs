@@ -18,7 +18,7 @@ namespace Grafy
         {
             var color = Brushes.Blue;
             Graphics kp = e.Graphics;
-            //kp.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            kp.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             Pen tužka = new Pen(Color.LightGray);
             int početČárek = 290 * 2 / jednotka;
             for (int i = 1; i < početČárek; i++)
@@ -218,7 +218,22 @@ namespace Grafy
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            panel1.Paint += new PaintEventHandler(panel1_draw);
+            panel1.Refresh();
+        }
+        private void panel1_draw(object sender, PaintEventArgs e)
+        {
+            
+        }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Point picovina = panel1.PointToClient(Cursor.Position);
+            label1.Text = picovina.ToString();
+        }
+        private void kokot()
+        {
+            //panel1.size
         }
     }
 }
