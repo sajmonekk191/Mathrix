@@ -7,7 +7,13 @@ namespace Grafy
 {
     public partial class Form1 : Form
     {
+        int x = 0;
+        int y = 0;
+        int x1 = 0;
+        int y1 = 0;
         int jednotka = 20;
+        Point body1;
+        Point body2;
         public Form1()
         {
             InitializeComponent();
@@ -162,8 +168,9 @@ namespace Grafy
                             break;
                     }
                     break;
+
                 default:
-                    color = Brushes.Blue;
+                    color = Brushes.Black;
                     switch (comboBox1.Text)
                     {
                         case "5":
@@ -202,7 +209,6 @@ namespace Grafy
                         default:
                             kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
                             break;
-
                     }
                     break;
             }
@@ -218,22 +224,54 @@ namespace Grafy
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            //20
+            try
+            {
+                x = Convert.ToInt32(textBox1.Text);
+                y = Convert.ToInt32(textBox2.Text);
+                x1 = Convert.ToInt32(textBox3.Text);
+                y1 = Convert.ToInt32(textBox4.Text);
+            }
+            catch
+            {
+            }
+            int data1x = 400 + x * 20; //400 + x * 20
+            int data1y = 400 + y * -20; //400 + y * -20
+            int data2x = 400 + x1 * 20; //400 + x1 * 20
+            int data2y = 400 + y1 * -20; //400 + y1 * -20
+            #region
+
+            #endregion
+            Point bod1 = new Point(data1x, data1y);
+            Point bod2 = new Point(data2x, data2y);
+            body1 = bod1;
+            body2 = bod2;
             panel1.Paint += new PaintEventHandler(panel1_draw);
             panel1.Refresh();
         }
         private void panel1_draw(object sender, PaintEventArgs e)
         {
-            
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            Point picovina = panel1.PointToClient(Cursor.Position);
-            label1.Text = picovina.ToString();
-        }
-        private void kokot()
-        {
-            //panel1.size
+            Graphics kp = e.Graphics;
+            Pen pen = new Pen(Color.Black);
+            switch (comboBox2.Text)
+            {
+                case "Modrá":
+                    pen = new Pen(Color.Blue);
+                    kp.DrawLine(pen, body1, body2);
+                    break;
+                case "Červená":
+                    pen = new Pen(Color.Red);
+                    kp.DrawLine(pen, body1, body2);
+                    break;
+                case "Zelená":
+                    pen = new Pen(Color.Green);
+                    kp.DrawLine(pen, body1, body2);
+                    break;
+                default:
+                    pen = new Pen(Color.Black);
+                    kp.DrawLine(pen, body1, body2);
+                    break;
+            }
         }
     }
 }

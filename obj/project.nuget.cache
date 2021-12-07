@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Jg0+ybHGg9UYzvEoMagxhCMCYoxUDMWT2SofOnfOrOPKmQkicoZ74G6eJuccXuSk1eXQTFIHO6EsVckVD6EAVw==",
+  "dgSpecHash": "JN7TmQCioa7SFKtC0w1EsFxFoAr3MOzY7dcSvj/ZePajpmoQYbsztGYPuuZekwobgkhJHbZp9xicd+SHsXGuJQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\sajmo\\Desktop\\Mathrix-main\\Grafy.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\simon.novak\\Mathrix\\Grafy.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\simon.novak\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.21\\microsoft.netcore.app.host.win-x64.3.1.21.nupkg.sha512"
+  ],
   "logs": []
 }
