@@ -93,6 +93,16 @@ namespace Grafy.Properties {
         /// <summary>
         ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap backicon {
+            get {
+                object obj = ResourceManager.GetObject("backicon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cestina {
             get {
                 object obj = ResourceManager.GetObject("cestina", resourceCulture);

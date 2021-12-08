@@ -14,10 +14,20 @@ namespace Grafy
         int jednotka = 20;
         Point body1;
         Point body2;
+        Point body12;
+        bool mouseDown;
+        Point lastLocation;
+        bool lajna = false;
+        bool simple = false;
         public Form1()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.SelectedItem = "15";
+            comboBox2.SelectedItem = "Černá (Default)";
+            panel1.Refresh();
         }
 
         public void panel1_Paint(object sender, PaintEventArgs e)
@@ -40,176 +50,44 @@ namespace Grafy
             kp.DrawString("X", new Font("Arial", 9), Brushes.Black, 781, 403); // písmeno X
             kp.DrawString("Y", new Font("Arial", 9), Brushes.Black, 387, 0); // písmeno Y
             #region
-            switch (comboBox2.Text)
+            color = Brushes.Black;
+            switch (comboBox1.Text)
             {
-                case "Modrá":
-                    color = Brushes.Blue;
-                    switch (comboBox1.Text)
-                    {
-                        case "5":
-                            kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
-                            kp.DrawString("-5", new Font("Arial", 8), color, 289, 403); //číslo -5 na X
-                            kp.DrawString("5", new Font("Arial", 8), color, 496, 403); //číslo 5 na X
-                            kp.DrawString("-5", new Font("Arial", 8), color, 382, 492); //číslo -5 na Y
-                            kp.DrawString("5", new Font("Arial", 8), color, 387, 291); //číslo 5 na Y
-                            break;
-                        case "10":
-                            kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
-                            kp.DrawString("-10", new Font("Arial", 8), color, 189, 403); //číslo -10 na X
-                            kp.DrawString("-5", new Font("Arial", 8), color, 289, 403); //číslo -5 na X
-                            kp.DrawString("5", new Font("Arial", 8), color, 496, 403); //číslo 5 na X
-                            kp.DrawString("10", new Font("Arial", 8), color, 593, 403); //číslo 10 na X
-                            kp.DrawString("-10", new Font("Arial", 8), color, 378, 593); //číslo -10 na Y
-                            kp.DrawString("-5", new Font("Arial", 8), color, 382, 492); //číslo -5 na Y
-                            kp.DrawString("5", new Font("Arial", 8), color, 387, 291); //číslo 5 na Y
-                            kp.DrawString("10", new Font("Arial", 8), color, 382, 191); //číslo 10 na Y
-                            break;
-                        case "15":
-                            kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
-                            kp.DrawString("-15", new Font("Arial", 8), color, 87, 403); //číslo -15 na X
-                            kp.DrawString("-10", new Font("Arial", 8), color, 189, 403); //číslo -10 na X
-                            kp.DrawString("-5", new Font("Arial", 8), color, 289, 403); //číslo -5 na X
-                            kp.DrawString("5", new Font("Arial", 8), color, 496, 403); //číslo 5 na X
-                            kp.DrawString("10", new Font("Arial", 8), color, 593, 403); //číslo 10 na X
-                            kp.DrawString("15", new Font("Arial", 8), color, 693, 403); //číslo 15 na X
-                            kp.DrawString("-15", new Font("Arial", 8), color, 378, 692); //číslo -15 na Y
-                            kp.DrawString("-10", new Font("Arial", 8), color, 378, 593); //číslo -10 na Y
-                            kp.DrawString("-5", new Font("Arial", 8), color, 382, 492); //číslo -5 na Y
-                            kp.DrawString("5", new Font("Arial", 8), color, 387, 291); //číslo 5 na Y
-                            kp.DrawString("10", new Font("Arial", 8), color, 382, 191); //číslo 10 na Y
-                            kp.DrawString("15", new Font("Arial", 8), color, 382, 91); //číslo 15 na Y
-                            break;
-                        default:
-                            kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
-                            break;
-                    }
+                case "5":
+                    kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
+                    kp.DrawString("-5", new Font("Arial", 8), color, 289, 403); //číslo -5 na X
+                    kp.DrawString("5", new Font("Arial", 8), color, 496, 403); //číslo 5 na X
+                    kp.DrawString("-5", new Font("Arial", 8), color, 382, 492); //číslo -5 na Y
+                    kp.DrawString("5", new Font("Arial", 8), color, 387, 291); //číslo 5 na Y
                     break;
-                case "Červená":
-                    color = Brushes.Red;
-                    switch (comboBox1.Text)
-                    {
-                        case "5":
-                            kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
-                            kp.DrawString("-5", new Font("Arial", 8), color, 289, 403); //číslo -5 na X
-                            kp.DrawString("5", new Font("Arial", 8), color, 496, 403); //číslo 5 na X
-                            kp.DrawString("-5", new Font("Arial", 8), color, 382, 492); //číslo -5 na Y
-                            kp.DrawString("5", new Font("Arial", 8), color, 387, 291); //číslo 5 na Y
-                            break;
-                        case "10":
-                            kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
-                            kp.DrawString("-10", new Font("Arial", 8), color, 189, 403); //číslo -10 na X
-                            kp.DrawString("-5", new Font("Arial", 8), color, 289, 403); //číslo -5 na X
-                            kp.DrawString("5", new Font("Arial", 8), color, 496, 403); //číslo 5 na X
-                            kp.DrawString("10", new Font("Arial", 8), color, 593, 403); //číslo 10 na X
-                            kp.DrawString("-10", new Font("Arial", 8), color, 378, 593); //číslo -10 na Y
-                            kp.DrawString("-5", new Font("Arial", 8), color, 382, 492); //číslo -5 na Y
-                            kp.DrawString("5", new Font("Arial", 8), color, 387, 291); //číslo 5 na Y
-                            kp.DrawString("10", new Font("Arial", 8), color, 382, 191); //číslo 10 na Y
-                            break;
-                        case "15":
-                            kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
-                            kp.DrawString("-15", new Font("Arial", 8), color, 87, 403); //číslo -15 na X
-                            kp.DrawString("-10", new Font("Arial", 8), color, 189, 403); //číslo -10 na X
-                            kp.DrawString("-5", new Font("Arial", 8), color, 289, 403); //číslo -5 na X
-                            kp.DrawString("5", new Font("Arial", 8), color, 496, 403); //číslo 5 na X
-                            kp.DrawString("10", new Font("Arial", 8), color, 593, 403); //číslo 10 na X
-                            kp.DrawString("15", new Font("Arial", 8), color, 693, 403); //číslo 15 na X
-                            kp.DrawString("-15", new Font("Arial", 8), color, 378, 692); //číslo -15 na Y
-                            kp.DrawString("-10", new Font("Arial", 8), color, 378, 593); //číslo -10 na Y
-                            kp.DrawString("-5", new Font("Arial", 8), color, 382, 492); //číslo -5 na Y
-                            kp.DrawString("5", new Font("Arial", 8), color, 387, 291); //číslo 5 na Y
-                            kp.DrawString("10", new Font("Arial", 8), color, 382, 191); //číslo 10 na Y
-                            kp.DrawString("15", new Font("Arial", 8), color, 382, 91); //číslo 15 na Y
-                            break;
-                        default:
-                            kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
-                            break;
-                    }
+                case "10":
+                    kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
+                    kp.DrawString("-10", new Font("Arial", 8), color, 189, 403); //číslo -10 na X
+                    kp.DrawString("-5", new Font("Arial", 8), color, 289, 403); //číslo -5 na X
+                    kp.DrawString("5", new Font("Arial", 8), color, 496, 403); //číslo 5 na X
+                    kp.DrawString("10", new Font("Arial", 8), color, 593, 403); //číslo 10 na X
+                    kp.DrawString("-10", new Font("Arial", 8), color, 378, 593); //číslo -10 na Y
+                    kp.DrawString("-5", new Font("Arial", 8), color, 382, 492); //číslo -5 na Y
+                    kp.DrawString("5", new Font("Arial", 8), color, 387, 291); //číslo 5 na Y
+                    kp.DrawString("10", new Font("Arial", 8), color, 382, 191); //číslo 10 na Y
                     break;
-                case "Zelená":
-                    color = Brushes.Green;
-                    switch (comboBox1.Text)
-                    {
-                        case "5":
-                            kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
-                            kp.DrawString("-5", new Font("Arial", 8), color, 289, 403); //číslo -5 na X
-                            kp.DrawString("5", new Font("Arial", 8), color, 496, 403); //číslo 5 na X
-                            kp.DrawString("-5", new Font("Arial", 8), color, 382, 492); //číslo -5 na Y
-                            kp.DrawString("5", new Font("Arial", 8), color, 387, 291); //číslo 5 na Y
-                            break;
-                        case "10":
-                            kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
-                            kp.DrawString("-10", new Font("Arial", 8), color, 189, 403); //číslo -10 na X
-                            kp.DrawString("-5", new Font("Arial", 8), color, 289, 403); //číslo -5 na X
-                            kp.DrawString("5", new Font("Arial", 8), color, 496, 403); //číslo 5 na X
-                            kp.DrawString("10", new Font("Arial", 8), color, 593, 403); //číslo 10 na X
-                            kp.DrawString("-10", new Font("Arial", 8), color, 378, 593); //číslo -10 na Y
-                            kp.DrawString("-5", new Font("Arial", 8), color, 382, 492); //číslo -5 na Y
-                            kp.DrawString("5", new Font("Arial", 8), color, 387, 291); //číslo 5 na Y
-                            kp.DrawString("10", new Font("Arial", 8), color, 382, 191); //číslo 10 na Y
-                            break;
-                        case "15":
-                            kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
-                            kp.DrawString("-15", new Font("Arial", 8), color, 87, 403); //číslo -15 na X
-                            kp.DrawString("-10", new Font("Arial", 8), color, 189, 403); //číslo -10 na X
-                            kp.DrawString("-5", new Font("Arial", 8), color, 289, 403); //číslo -5 na X
-                            kp.DrawString("5", new Font("Arial", 8), color, 496, 403); //číslo 5 na X
-                            kp.DrawString("10", new Font("Arial", 8), color, 593, 403); //číslo 10 na X
-                            kp.DrawString("15", new Font("Arial", 8), color, 693, 403); //číslo 15 na X
-                            kp.DrawString("-15", new Font("Arial", 8), color, 378, 692); //číslo -15 na Y
-                            kp.DrawString("-10", new Font("Arial", 8), color, 378, 593); //číslo -10 na Y
-                            kp.DrawString("-5", new Font("Arial", 8), color, 382, 492); //číslo -5 na Y
-                            kp.DrawString("5", new Font("Arial", 8), color, 387, 291); //číslo 5 na Y
-                            kp.DrawString("10", new Font("Arial", 8), color, 382, 191); //číslo 10 na Y
-                            kp.DrawString("15", new Font("Arial", 8), color, 382, 91); //číslo 15 na Y
-                            break;
-                        default:
-                            kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
-                            break;
-                    }
+                case "15":
+                    kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
+                    kp.DrawString("-15", new Font("Arial", 8), color, 87, 403); //číslo -15 na X
+                    kp.DrawString("-10", new Font("Arial", 8), color, 189, 403); //číslo -10 na X
+                    kp.DrawString("-5", new Font("Arial", 8), color, 289, 403); //číslo -5 na X
+                    kp.DrawString("5", new Font("Arial", 8), color, 496, 403); //číslo 5 na X
+                    kp.DrawString("10", new Font("Arial", 8), color, 593, 403); //číslo 10 na X
+                    kp.DrawString("15", new Font("Arial", 8), color, 693, 403); //číslo 15 na X
+                    kp.DrawString("-15", new Font("Arial", 8), color, 378, 692); //číslo -15 na Y
+                    kp.DrawString("-10", new Font("Arial", 8), color, 378, 593); //číslo -10 na Y
+                    kp.DrawString("-5", new Font("Arial", 8), color, 382, 492); //číslo -5 na Y
+                    kp.DrawString("5", new Font("Arial", 8), color, 387, 291); //číslo 5 na Y
+                    kp.DrawString("10", new Font("Arial", 8), color, 382, 191); //číslo 10 na Y
+                    kp.DrawString("15", new Font("Arial", 8), color, 382, 91); //číslo 15 na Y
                     break;
-
                 default:
-                    color = Brushes.Black;
-                    switch (comboBox1.Text)
-                    {
-                        case "5":
-                            kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
-                            kp.DrawString("-5", new Font("Arial", 8), color, 289, 403); //číslo -5 na X
-                            kp.DrawString("5", new Font("Arial", 8), color, 496, 403); //číslo 5 na X
-                            kp.DrawString("-5", new Font("Arial", 8), color, 382, 492); //číslo -5 na Y
-                            kp.DrawString("5", new Font("Arial", 8), color, 387, 291); //číslo 5 na Y
-                            break;
-                        case "10":
-                            kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
-                            kp.DrawString("-10", new Font("Arial", 8), color, 189, 403); //číslo -10 na X
-                            kp.DrawString("-5", new Font("Arial", 8), color, 289, 403); //číslo -5 na X
-                            kp.DrawString("5", new Font("Arial", 8), color, 496, 403); //číslo 5 na X
-                            kp.DrawString("10", new Font("Arial", 8), color, 593, 403); //číslo 10 na X
-                            kp.DrawString("-10", new Font("Arial", 8), color, 378, 593); //číslo -10 na Y
-                            kp.DrawString("-5", new Font("Arial", 8), color, 382, 492); //číslo -5 na Y
-                            kp.DrawString("5", new Font("Arial", 8), color, 387, 291); //číslo 5 na Y
-                            kp.DrawString("10", new Font("Arial", 8), color, 382, 191); //číslo 10 na Y
-                            break;
-                        case "15":
-                            kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
-                            kp.DrawString("-15", new Font("Arial", 8), color, 87, 403); //číslo -15 na X
-                            kp.DrawString("-10", new Font("Arial", 8), color, 189, 403); //číslo -10 na X
-                            kp.DrawString("-5", new Font("Arial", 8), color, 289, 403); //číslo -5 na X
-                            kp.DrawString("5", new Font("Arial", 8), color, 496, 403); //číslo 5 na X
-                            kp.DrawString("10", new Font("Arial", 8), color, 593, 403); //číslo 10 na X
-                            kp.DrawString("15", new Font("Arial", 8), color, 693, 403); //číslo 15 na X
-                            kp.DrawString("-15", new Font("Arial", 8), color, 378, 692); //číslo -15 na Y
-                            kp.DrawString("-10", new Font("Arial", 8), color, 378, 593); //číslo -10 na Y
-                            kp.DrawString("-5", new Font("Arial", 8), color, 382, 492); //číslo -5 na Y
-                            kp.DrawString("5", new Font("Arial", 8), color, 387, 291); //číslo 5 na Y
-                            kp.DrawString("10", new Font("Arial", 8), color, 382, 191); //číslo 10 na Y
-                            kp.DrawString("15", new Font("Arial", 8), color, 382, 91); //číslo 15 na Y
-                            break;
-                        default:
-                            kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
-                            break;
-                    }
+                    kp.DrawString("0", new Font("Arial", 8), color, 402, 402);
                     break;
             }
             #endregion
@@ -224,7 +102,10 @@ namespace Grafy
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            //20
+            lajna = true;
+            simple = false;
+            textBox5.Text = "";
+            textBox6.Text = "";
             try
             {
                 x = Convert.ToInt32(textBox1.Text);
@@ -239,9 +120,6 @@ namespace Grafy
             int data1y = 400 + y * -20; //400 + y * -20
             int data2x = 400 + x1 * 20; //400 + x1 * 20
             int data2y = 400 + y1 * -20; //400 + y1 * -20
-            #region
-
-            #endregion
             Point bod1 = new Point(data1x, data1y);
             Point bod2 = new Point(data2x, data2y);
             body1 = bod1;
@@ -253,25 +131,175 @@ namespace Grafy
         {
             Graphics kp = e.Graphics;
             Pen pen = new Pen(Color.Black);
-            switch (comboBox2.Text)
+            #region
+            if (lajna)
             {
-                case "Modrá":
-                    pen = new Pen(Color.Blue);
-                    kp.DrawLine(pen, body1, body2);
-                    break;
-                case "Červená":
-                    pen = new Pen(Color.Red);
-                    kp.DrawLine(pen, body1, body2);
-                    break;
-                case "Zelená":
-                    pen = new Pen(Color.Green);
-                    kp.DrawLine(pen, body1, body2);
-                    break;
-                default:
-                    pen = new Pen(Color.Black);
-                    kp.DrawLine(pen, body1, body2);
-                    break;
+                switch (comboBox2.Text)
+                {
+                    case "Modrá":
+                        pen = new Pen(Color.Blue);
+                        if (checkBox1.Checked)
+                        {
+                            kp.DrawString("y", new Font("Arial", 9), Brushes.Blue, body1.X - 13, body1.Y - 13);
+                            kp.DrawString("x", new Font("Arial", 9), Brushes.Blue, body2.X - 13, body2.Y - 13);
+                        }
+                        kp.DrawLine(pen, body1, body2);
+                        break;
+                    case "Červená":
+                        pen = new Pen(Color.Red);
+                        if (checkBox1.Checked)
+                        {
+                            kp.DrawString("y", new Font("Arial", 9), Brushes.Blue, body1.X - 13, body1.Y - 13);
+                            kp.DrawString("x", new Font("Arial", 9), Brushes.Blue, body2.X - 13, body2.Y - 13);
+                        }
+                        kp.DrawLine(pen, body1, body2);
+                        break;
+                    case "Zelená":
+                        pen = new Pen(Color.Green);
+                        if (checkBox1.Checked)
+                        {
+                            kp.DrawString("y", new Font("Arial", 9), Brushes.Blue, body1.X - 13, body1.Y - 13);
+                            kp.DrawString("x", new Font("Arial", 9), Brushes.Blue, body2.X - 13, body2.Y - 13);
+                        }
+                        kp.DrawLine(pen, body1, body2);
+                        break;
+                    default:
+                        pen = new Pen(Color.Black);
+                        if (checkBox1.Checked)
+                        {
+                            kp.DrawString("y", new Font("Arial", 9), Brushes.Blue, body1.X - 13, body1.Y - 13);
+                            kp.DrawString("x", new Font("Arial", 9), Brushes.Blue, body2.X - 13, body2.Y - 13);
+                        }
+                        kp.DrawLine(pen, body1, body2);
+                        break;
+                }
             }
+            #endregion
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            simple = true;
+            lajna = false;
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            try
+            {
+                x = Convert.ToInt32(textBox5.Text);
+                y = Convert.ToInt32(textBox6.Text);
+            }
+            catch
+            {
+            }
+            int data1x2 = 400 + x * 20; //400 + x * 20
+            int data1y2 = 400 + y * -20; //400 + y * -20
+            Point bod1 = new Point(data1x2, data1y2);
+            body12 = bod1;
+            panel1.Paint += new PaintEventHandler(CrossDraw);
+            panel1.Refresh();
+        }
+        private void CrossDraw(object sender, PaintEventArgs e)
+        {
+            Graphics kp = e.Graphics;
+            Pen pen = new Pen(Color.Black);
+            if (simple)
+            {
+                switch (comboBox2.Text)
+                {
+                    case "Modrá":
+                        pen = new Pen(Color.Blue);
+                        kp.DrawString("X", new Font("Arial", 11), Brushes.Blue, body12.X - 6, body12.Y - 8);
+                        break;
+                    case "Červená":
+                        pen = new Pen(Color.Red);
+                        kp.DrawString("X", new Font("Arial", 11), Brushes.Red, body12.X - 6, body12.Y - 8);
+                        break;
+                    case "Zelená":
+                        pen = new Pen(Color.Green);
+                        kp.DrawString("X", new Font("Arial", 11), Brushes.Green, body12.X - 6, body12.Y - 8);
+                        break;
+                    default:
+                        pen = new Pen(Color.Black);
+                        kp.DrawString("X", new Font("Arial", 11), Brushes.Black, body12.X - 6, body12.Y - 8);
+                        break;
+                }
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            panel1.Refresh();
+        }
+
+        private void ExitLabel_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void ExitLabel_MouseEnter(object sender, EventArgs e)
+        {
+            ExitPanel.BackColor = Color.FromArgb(208, 38, 38);
+        }
+
+        private void ExitLabel_MouseLeave(object sender, EventArgs e)
+        {
+            ExitPanel.BackColor = Color.FromArgb(121, 9, 9);
+        }
+
+        private void label16_MouseEnter(object sender, EventArgs e)
+        {
+            MinimizePanel.BackColor = Color.Silver;
+        }
+
+        private void label16_MouseLeave(object sender, EventArgs e)
+        {
+            MinimizePanel.BackColor = Color.Gainsboro;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Main f = new Main();
+            f.Show();
+            this.Hide();
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox1.Size = new Size(25, 25);
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.Size = new Size(23, 23);
         }
     }
 }
