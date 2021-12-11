@@ -1,3 +1,4 @@
+﻿//http://sssi.cz/doc/soc/soc2016/soc_prochazka.pdf
 using System;
 using System.Drawing;
 using System.Windows.Forms;

@@ -53,3 +53,5 @@ C:\Users\simon.novak\Mathrix\obj\Debug\netcoreapp3.1\Grafy.csproj.CoreCompileInp
 C:\Users\simon.novak\Mathrix\obj\Debug\netcoreapp3.1\Grafy.dll
 C:\Users\simon.novak\Mathrix\obj\Debug\netcoreapp3.1\Grafy.pdb
 C:\Users\simon.novak\Mathrix\obj\Debug\netcoreapp3.1\Grafy.genruntimeconfig.cache
+C:\Users\sajmo\Desktop\Mathrix-main\obj\Debug\netcoreapp3.1\Grafy.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sajmo\Desktop\Mathrix-main\obj\Debug\netcoreapp3.1\Grafy.log.resources
